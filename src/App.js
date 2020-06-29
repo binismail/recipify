@@ -24,9 +24,10 @@ const App = ()=> {
       setSearch('')
     }
     let getReceipe = async () => {
-      const response = await fetch(`https://api.edamam.com/search?q={query}&app_id=${APP_ID}&app_key=${APP_KEY}&from=0&to=3&calories=591-722&health=alcohol-free`);
+      const response = await fetch(`https://cors-anywhere.herokuapp.com/https://api.edamam.com/search?q={query}&app_id=${APP_ID}&app_key=${APP_KEY}&from=0&to=3&calories=591-722&health=alcohol-free`);
       const data = await response.json();
       setRecipe(data.hits)
+      console.log(recipe)
     }
 
   const Header = () => {
@@ -36,7 +37,7 @@ const App = ()=> {
         <img src={logo} alt="website logo"/>
       </div>
       <form className="flex" onSubmit={handleSubmit}>
-      <input type="text" value={search} className="input shadow-lg" placeholder="enter you recipe..." onChange={handleChange}/>
+      <input type="text" value={search} className="input shadow-lg" placeholder="enter you recipe..." onChange={handleChange} key={search}/>
       <button className="btn shadow-lg">Search</button>
       </form>
       <div>
