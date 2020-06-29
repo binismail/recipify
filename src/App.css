@@ -19,6 +19,7 @@
 
 .btn{
   padding: 0px 40px;
+  font-size: 17px;
   height: 50px;
   margin-top: 5px;
   background: black;
@@ -43,6 +44,6 @@
 }
 
 .footer{
-  background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-image: linear-gradient(135deg, #8970a1 0%,  #667eea 100%);
   padding: 50px 30px;
 }

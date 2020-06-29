@@ -6,17 +6,27 @@ import './App.css';
 const App = ()=> {
   const [search, setSearch] = useState('')
   const [query, setQuery] = useState()
+  const [recipe, setRecipe] = useState()
 
   useEffect(() => {
     getReceipe()
-  })
+  }, [query])
   const APP_ID = '4df8dd6c';
     const APP_KEY = '449c64ab6aed20792910cb5b27183333';
 
+    let handleChange = (e)=> {
+      setSearch(e.target.value)
+    }
+
+    let handleSubmit = (e) => {
+      e.preventDefault();
+      setQuery(search)
+      setSearch('')
+    }
     let getReceipe = async () => {
-      const response = await fetch(`https://api.edamam.com/search?q=chicken&app_id=${YOUR_APP_ID}&app_key=${}&from=0&to=3&calories=591-722&health=alcohol-free`);
-      const data = response.json();
-      console.log(data)
+      const response = await fetch(`https://api.edamam.com/search?q={query}&app_id=${APP_ID}&app_key=${APP_KEY}&from=0&to=3&calories=591-722&health=alcohol-free`);
+      const data = await response.json();
+      setRecipe(data.hits)
     }
 
   const Header = () => {
@@ -25,8 +35,8 @@ const App = ()=> {
       <div>
         <img src={logo} alt="website logo"/>
       </div>
-      <form className="flex">
-      <input type="text" value={search} className="input shadow-lg" placeholder="enter you recipe..."/>
+      <form className="flex" onSubmit={handleSubmit}>
+      <input type="text" value={search} className="input shadow-lg" placeholder="enter you recipe..." onChange={handleChange}/>
       <button className="btn shadow-lg">Search</button>
       </form>
       <div>
