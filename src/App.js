@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import logo from './logo.png'
 import './tailwind.generated.css';
+import { IconName } from "react-icons/bs";
 import './App.css';
 
 const App = ()=> {
