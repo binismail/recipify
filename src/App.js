@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import logo from './logo.png'
+import logo from './logo.png';
+import img from './pepperoni-pizza.jpg';
 import './tailwind.generated.css';
 import { IconName } from "react-icons/bs";
 import './App.css';
@@ -54,9 +55,21 @@ const App = ()=> {
 
     const Aside = ()=> {
 
+      let DummyItem = (props)=> {
+
+        return (
+          <li className="flex bg-white rounded-lg p-3 shadow-lg pointer w-full margin-bottom hover "><img src={img} className="h-16 w-16 rounded-full" alt="pp"/><div>
+          <h4 className="change-font">pepperoni-pizza</h4>
+          </div></li>
+        )
+
+      }
+
       return(
         <div className="aside shadow-xl">
-        <h1>aside</h1>
+        <ul><DummyItem/>
+        <DummyItem/>
+        </ul>
         </div>
   
       )
